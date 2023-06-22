@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { roles } from './user.constant';
+import { roles } from './auth.constant';
 
-const createUserZodSchema = z.object({
+const createAuthZodSchema = z.object({
   body: z.object({
     password: z.string({
       required_error: 'password is required',
@@ -32,6 +32,6 @@ const createUserZodSchema = z.object({
   }),
 });
 
-export const UserValidation = {
-  createUserZodSchema,
+export const AuthValidation = {
+  createAuthZodSchema,
 };

@@ -1,28 +1,26 @@
-import httpStatus from 'http-status';
-import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-const app: Application = express();
-import routes from './app/routes';
+import express, { Application, NextFunction, Request, Response } from 'express';
+import httpStatus from 'http-status';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import routes from './app/routes';
+const app: Application = express();
 
-// cors
 app.use(cors());
 
-// parser
+//parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1', routes);
 
-// Testing
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
+// app.get('/', async (req: Request, res: Response, next: NextFunction) => {
+//   throw new Error('Testing Error logger');
+// });
 
-// global error handler
+//global error handler
 app.use(globalErrorHandler);
 
-// handle not found route
+//handle not found
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(httpStatus.NOT_FOUND).json({
     success: false,
@@ -30,7 +28,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     errorMessages: [
       {
         path: req.originalUrl,
-        message: 'API end point not found',
+        message: 'API Not Found',
       },
     ],
   });

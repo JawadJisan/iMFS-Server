@@ -3,24 +3,24 @@ import { RequestHandler } from 'express-serve-static-core';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import { IUser } from './user.interface';
-import { UserService } from './user.service';
+import { IAuth } from './auth.interface';
+import { AuthService } from './auth.service';
 
-const createUser: RequestHandler = catchAsync(
+const createAuthUser: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
     const data = req.body;
     console.log(data, 'signup');
-    const result = await UserService.createUser(data);
+    const result = await AuthService.createAuthUser(data);
 
-    sendResponse<IUser>(res, {
+    sendResponse<IAuth>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'user created successfully!',
+      message: 'Auth User created successfully!',
       data: result,
     });
   }
 );
 
-export const UserController = {
-  createUser,
+export const AuthController = {
+  createAuthUser,
 };

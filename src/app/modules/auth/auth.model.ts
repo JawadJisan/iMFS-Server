@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
-import { IUser, UserModel } from './user.interface';
+import { IAuth, AuthModal } from './auth.interface';
 
-const userSchema = new Schema<IUser>(
+const authSchema = new Schema<IAuth>(
   {
     phoneNumber: {
       type: String,
@@ -18,6 +18,7 @@ const userSchema = new Schema<IUser>(
       required: true,
     },
     name: {
+      required: true,
       type: {
         firstName: {
           type: String,
@@ -28,7 +29,6 @@ const userSchema = new Schema<IUser>(
           required: true,
         },
       },
-      required: true,
     },
     address: {
       type: String,
@@ -51,4 +51,4 @@ const userSchema = new Schema<IUser>(
   }
 );
 
-export const User = model<IUser, UserModel>('User', userSchema);
+export const Auth = model<IAuth, AuthModal>('Auth', authSchema);

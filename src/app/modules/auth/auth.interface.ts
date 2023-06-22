@@ -1,18 +1,18 @@
 import { Model } from 'mongoose';
 
 // IUser, UserModel
-export type UserName = {
+export type Name = {
   firstName: string;
   lastName: string;
 };
 
-export type IUser = {
+export type IAuth = {
   phoneNumber: string;
   role: 'seller' | 'buyer';
-  name: UserName;
+  name: Name;
   password: string;
   address: string;
   budget: number;
   income: number;
 };
-export type UserModel = Model<IUser, Record<string, unknown>>;
+export type AuthModal = Model<IAuth, Record<string, unknown>>;
