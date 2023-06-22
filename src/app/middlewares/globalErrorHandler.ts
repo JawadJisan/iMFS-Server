@@ -73,10 +73,3 @@ const globalErrorHandler: ErrorRequestHandler = (
 };
 
 export default globalErrorHandler;
-
-//path:
-//message:
-
-// 2025 Fall
-
-// 2025 and
