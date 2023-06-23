@@ -47,3 +47,8 @@ export type ICow = {
   category: Category;
 };
 export type CowModel = Model<ICow, Record<string, unknown>>;
+
+export type ICowFilters = {
+  location?: string;
+  searchTerm?: string;
+};
