@@ -8,7 +8,6 @@ import { SortOrder } from 'mongoose';
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
   const result = await Cow.create(payload);
-  //   .populate('academicFaculty');
   return result;
 };
 const getIndividualCow = async (id: string): Promise<ICow | null> => {
@@ -66,7 +65,7 @@ const getAllCows = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Cow.find(whereConditions)
-    .populate('seller')
+    // .populate('seller')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);

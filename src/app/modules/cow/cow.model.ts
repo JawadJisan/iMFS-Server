@@ -43,6 +43,11 @@ const cowSchema = new Schema<ICow>(
       type: String,
       required: true,
     },
+    category: {
+      enum: ['Dairy', 'Beef', 'DualPurpose'],
+      type: String,
+      required: true,
+    },
     weight: {
       type: Number,
       required: true,
@@ -50,9 +55,6 @@ const cowSchema = new Schema<ICow>(
     label: {
       required: true,
       type: String,
-    },
-    category: {
-      enum: ['Dairy', 'Beef', 'DualPurpose'],
     },
     seller: {
       type: Schema.Types.ObjectId,

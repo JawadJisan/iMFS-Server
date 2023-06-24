@@ -9,6 +9,7 @@ import { cowSearchableFields } from './cow.constant';
 import { paginationFields } from '../../../interfaces/pagination';
 
 const getAllCows = catchAsync(async (req: Request, res: Response) => {
+  console.log(req.query, 'query data');
   const filters = pick(req.query, cowSearchableFields);
   const paginationOptions = pick(req.query, paginationFields);
 
