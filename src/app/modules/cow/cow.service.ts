@@ -8,7 +8,6 @@ import { SortOrder } from 'mongoose';
 import { Auth } from '../auth/auth.model';
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
-  console.log(payload);
   const result = await Cow.create(payload);
   return result;
 };
