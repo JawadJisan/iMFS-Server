@@ -7,6 +7,7 @@ import { CowServices } from './cow.service';
 import { ICow } from './cow.interface';
 import { cowSearchableFields } from './cow.constant';
 import { paginationFields } from '../../../interfaces/pagination';
+import { Auth } from '../auth/auth.model';
 
 const getAllCows = catchAsync(async (req: Request, res: Response) => {
   console.log(req.query, 'query data');
@@ -65,15 +66,27 @@ const deleteCow = catchAsync(async (req: Request, res: Response) => {
 
 const createCow = catchAsync(async (req: Request, res: Response) => {
   const data = req.body;
-  console.log(data, 'create new hamba');
-  const result = await CowServices.createCow(data);
-
-  sendResponse<ICow>(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Hamba Created successfully !',
-    data: result,
-  });
+  const { seller } = data;
+  const isExistSeller = await Auth.findById(seller);
+  if (isExistSeller !== null) {
+    console.log(data, 'create new hamba');
+    const result = await CowServices.createCow(data);
+    sendResponse<ICow>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Hamba Created successfully !',
+      data: result,
+    });
+  } else {
+    // const result = await CowServices.createCow(data);
+    sendResponse<ICow>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Seller id is Invalid !',
+      data: null,
+    });
+  }
+  console.log(isExistSeller, 'seller info');
 });
 
 export const CowController = {

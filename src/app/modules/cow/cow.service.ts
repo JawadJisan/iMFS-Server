@@ -5,8 +5,10 @@ import { Cow } from './cow.model';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { cowSearchableFields } from './cow.constant';
 import { SortOrder } from 'mongoose';
+import { Auth } from '../auth/auth.model';
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
+  console.log(payload);
   const result = await Cow.create(payload);
   return result;
 };
