@@ -10,5 +10,6 @@ router.post(
   validateRequest(OrderValidation.createOrderZodSchema),
   OrderController.createOrder
 );
+router.get('/', OrderController.readOrder);
 
 export const OrderRoutes = router;

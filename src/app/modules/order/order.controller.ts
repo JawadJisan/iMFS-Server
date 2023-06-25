@@ -64,4 +64,5 @@ const createOrder = catchAsync(async (req: Request, res: Response) => {
 
 export const OrderController = {
   createOrder,
+  readOrder,
 };
