@@ -1,11 +1,13 @@
 import express from 'express';
 import { OrderController } from './order.controller';
+import validateRequest from '../../middlewares/validateRequest';
+import { OrderValidation } from './order.validation';
 
 const router = express.Router();
 
 router.post(
   '/',
-  //   validateRequest(CowValidation.createCowZodSchema),
+  validateRequest(OrderValidation.createOrderZodSchema),
   OrderController.createOrder
 );
 
