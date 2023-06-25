@@ -1,10 +1,10 @@
 # l2a3-cow-hut-backend-assignment-JawadJisan
 
+https://digital-cow-hut-jawadjisan.vercel.app/
+
 ### All Route Endpoints
 
 #### User
-
-https://digital-cow-hut-jawadjisan.vercel.app/
 
 - https://digital-cow-hut-jawadjisan.vercel.app/api/v1/auth/signup (POST)
 - https://digital-cow-hut-jawadjisan.vercel.app/api/v1/users (GET)
