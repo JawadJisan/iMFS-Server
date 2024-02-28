@@ -1,6 +1,5 @@
-import { number } from 'zod';
 import { httpStatus } from 'http-status';
-import { JwtPayload, Secret } from 'jsonwebtoken';
+import { Secret } from 'jsonwebtoken';
 
 // import config from '../../../config';
 import { IAuth, ISigninUser, ISigninUserResponse } from './auth.interface';
