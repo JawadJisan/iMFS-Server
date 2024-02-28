@@ -1,5 +1,5 @@
 {
-  "name": "digital-cow-hut",
+  "name": "imfsserver",
   "version": "1.0.0",
   "description": "",
   "main": "src/sever.ts",
