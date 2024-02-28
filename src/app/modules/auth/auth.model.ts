@@ -3,14 +3,29 @@ import { IAuth, AuthModal } from './auth.interface';
 
 const authSchema = new Schema<IAuth>(
   {
-    phoneNumber: {
-      type: String,
+    nid: {
+      type: Number,
       required: true,
       unique: true,
     },
-    role: {
-      enum: ['seller', 'buyer'],
+    mobileNumber: {
+      type: Number,
       required: true,
+      unique: true,
+    },
+    accountType: {
+      enum: ['user', 'agent', 'admin'],
+      required: true,
+      type: String,
+    },
+    status: {
+      enum: ['blocked', 'approved', 'normal', 'pending'],
+      // required: true,
+      type: String,
+    },
+    cashRequest: {
+      enum: ['requested', 'approved', 'rejected'],
+      // required: true,
       type: String,
     },
     password: {
@@ -19,29 +34,29 @@ const authSchema = new Schema<IAuth>(
     },
     name: {
       required: true,
-      type: {
-        firstName: {
-          type: String,
-          required: true,
-        },
-        lastName: {
-          type: String,
-          required: true,
-        },
-      },
-    },
-    address: {
       type: String,
-      required: true,
     },
-    budget: {
+    email: {
+      required: true,
+      unique: true,
+      type: String,
+    },
+    totalMoney: {
       type: Number,
-      required: true,
     },
-    income: {
+    initialBalance: {
       type: Number,
-      required: true,
     },
+    notification: {},
+    sessionTime: {},
+    // budget: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // income: {
+    //   type: Number,
+    //   required: true,
+    // },
   },
   {
     timestamps: true,

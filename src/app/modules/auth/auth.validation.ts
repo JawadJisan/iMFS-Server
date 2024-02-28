@@ -6,7 +6,7 @@ const createAuthZodSchema = z.object({
     password: z.string({
       required_error: 'password is required',
     }),
-    phoneNumber: z.string({
+    mobileNumber: z.string({
       required_error: 'Phone number is required',
     }),
     role: z.enum([...roles] as [string, ...string[]], {
@@ -39,7 +39,7 @@ const updateUserZodSchema = z.object({
         required_error: 'password is required',
       })
       .optional(),
-    phoneNumber: z
+    mobileNumber: z
       .string({
         required_error: 'Phone number is required',
       })

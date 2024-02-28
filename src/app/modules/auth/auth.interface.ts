@@ -1,18 +1,27 @@
 import { Model } from 'mongoose';
 
 // IUser, UserModel
-export type Name = {
-  firstName: string;
-  lastName: string;
-};
 
 export type IAuth = {
-  phoneNumber: string;
-  role: 'seller' | 'buyer';
-  name: Name;
+  email: string;
+  role: 'user' | 'agent';
+  name: string;
   password: string;
-  address: string;
-  budget: number;
-  income: number;
+  nid: number;
+  mobileNumber: number;
+
+  totalMoney: number;
+  initialBalance: number;
 };
 export type AuthModal = Model<IAuth, Record<string, unknown>>;
+
+export type ISigninUser = {
+  // email: string;
+  password: number;
+  mobileNumber: number;
+};
+
+export type ISigninUserResponse = {
+  accessToken: string;
+  refreshToken: string;
+};

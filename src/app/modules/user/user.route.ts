@@ -6,22 +6,9 @@ import { UserController } from './user.controller';
 const router = express.Router();
 
 router.get('/', UserController.getAllUsers);
-router.get('/:id', UserController.getSingleUser);
+router.get('/:email', UserController.getSingleUser);
 router.delete('/:id', UserController.deleteUser);
-router.patch(
-  '/:id',
-  validateRequest(AuthValidation.updateUserZodSchema),
-  UserController.updateUser
-);
+
+router.patch('/:id', UserController.updateUser);
 
 export const UserRoutes = router;
-
-/* 
-const router = express.Router();
-router.post(
-  '/signup',
-  validateRequest(AuthValidation.createAuthZodSchema),
-  AuthController.createAuthUser
-);
-export const AuthRoutes = router;
-*/

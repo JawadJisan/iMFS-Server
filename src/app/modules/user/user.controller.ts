@@ -12,15 +12,14 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Users retrieved successfully !',
-    meta: result.meta,
-    data: result.data,
+    data: result,
   });
 });
 
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const email = req.params.email;
 
-  const result = await UserService.getSingleUser(id);
+  const result = await UserService.getSingleUser(email);
 
   sendResponse<IAuth>(res, {
     statusCode: httpStatus.OK,
@@ -47,12 +46,15 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
   const updatedData = req.body;
 
+  console.log(id, 'id');
+  console.log(updatedData, 'body');
+
   const result = await UserService.updateUser(id, updatedData);
 
   sendResponse<IAuth>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated successfully !',
+    message: 'User Account Status updated successfully !',
     data: result,
   });
 });
